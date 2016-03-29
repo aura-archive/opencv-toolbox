@@ -10,6 +10,7 @@
 
 #include <cmath>
 #include <opencv2\opencv.hpp>
+#include <cstdarg>
 using namespace cv;
 
 namespace tl {
@@ -126,12 +127,14 @@ namespace tl {
 		return sum / count;
 	}
 
-
-	Vec3b Mean(const Vec3b &a, const Vec3b &b) {
-		return Vec3b((a.val[0] + b.val[0]) / 2, (a.val[1] + b.val[1]) / 2, (a.val[2] + b.val[2]) / 2);
+	template <class T>
+	T Mean(const T &a, const T &b) {
+		return tlGetMean<T>(2, a, b);
 	}
-	Scalar Mean(const Scalar &a, const Scalar &b) {
-		return Scalar((a.val[0] + b.val[0]) / 2, (a.val[1] + b.val[1]) / 2, (a.val[2] + b.val[2]) / 2);
+
+	template <class T>
+	T Mean(const T &a, const T &b,const T &c) {
+		return tlGetMean<T>(3, a, b, c);
 	}
 
 

@@ -252,7 +252,7 @@ namespace tl {
 
 	tlDebug& tlDebug::operator<< (float a) {
 		if (debugOutputWay == Off) return *this;
-		sout << setprecision(2) << fixed << IntType ? int(a) : a;
+		sout << setprecision(2) << fixed << (useIntType ? int(a) : a);
 		return *this;
 	}
 

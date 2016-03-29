@@ -1,4 +1,4 @@
-/****************************************************
+﻿/****************************************************
 * Toolbox for ytl's opencv project use
 * Tianlong Yang, yangtianlong111@gmail.com
 * Computer Science & Technology, Tsinghua University
@@ -12,9 +12,10 @@
 #define USE_ALIAS
 #include "basic.hpp"
 #include "tlDebug\tlDebug.hpp"
-#include "tlPoint\tlPoint.hpp"
+#include "tlGeometry\tlGeometry.hpp"
 #include "tlArray\tlArray.hpp"
 #include "tlMath\tlMath.hpp"
+#include "tlGeometry\tlGeometry.hpp"
 #include "tlTranslate\tlTranslate.hpp"
 
 
@@ -23,20 +24,22 @@
 ytl的Toolbox，由{
 	一般类模块
 		tlDebug
-		tlPoint
+		tlGeometry
 		tlArray
 	opencv函数模块
 		tlMath
 		tlTranslate
+		tlGrating
 	基础函数
 		basic
 }
 组成
 
 tlDebug为类Qt的调试类，可以使用tlDebug()<<xxx来调用，详见tlDebug.hpp
-tlPoint为简易二维点类，用来进行坐标计算
 tlArray为矩阵类，用来生成多维矩阵和矩阵相关操作
 tlMath为opencv相关计算函数
+tlGeometry为几何相关函数,包括坐点类tlPoint和多边形类tlPoly
+tlGrating为光栅几何相关函数
 tlTranslate为opencv图形转换函数
 
 
