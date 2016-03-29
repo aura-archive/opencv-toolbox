@@ -1,6 +1,7 @@
 #ifndef TLARRAY_H
 #define TLARRAY_H
 
+#include "../tlGeometry/tlGeometry.hpp"
 
 namespace tl {
 	const int xo[] = { 1, -1, 0, 0 };
@@ -22,11 +23,21 @@ namespace tl {
 			delete[] a;
 		}
 
-		//点p位于[startX,startY] --- (startX+lenX , startX+lenY)中,左上闭,右下开
-		//int inMap(myPoint p, int lenX, int lenY, int startX = 0, int startY = 0);
+		//点p位于[startX,startY]-(startX+lenX , startX+lenY)中,左上闭,右下开
+		int inMap(tlPoint p, int lenX, int lenY, int startX = 0, int startY = 0) {
+			return startX <= p.x && p.x < startX + lenX
+				&& startY <= p.y && p.y < startY + lenY;
+		}
 		//点在Mat范围的矩形中
-		//int inMap(Mat &a, myPoint p);
-		//int inMap(Mat &a, int x, int y);
+		int inMap(Mat &a, tlPoint p) {
+			return 0 <= p.x && p.x < a.rows
+				&& 0 <= p.y && p.y < a.cols;
+		}
+		//点在[0,0]-(x,y)中
+		int inMap(Mat &a, int x, int y) {
+			return 0 <= x && x < a.rows
+				&& 0 <= y && y < a.cols;
+		}
 
 	};
 

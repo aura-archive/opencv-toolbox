@@ -14,6 +14,7 @@ tlPoint pt(1,1);
 #ifndef TLPOINT_H
 #define TLPOINT_H
 
+#include "../tlGrating/tlGrating.hpp"
 #include <cmath>
 
 namespace tl {
@@ -61,7 +62,7 @@ namespace tl {
 	typedef tlPoint2D<int> tlPointd;
 	typedef tlPoint2D<float> tlPointf;
 
-	//允许使用别名 Point
+//允许使用别名 Point
 #ifdef USE_ALIAS
 	typedef tlPoint2D<int> Point;
 #endif
@@ -69,6 +70,40 @@ namespace tl {
 }
 
 
+class tlPoly {
+private:
+public:
+	int n;
+	tlPoint *p;
+	tlPoly(int n) :n(n){
+		p = new tlPoint[n + 5];
+	}
+	tlPoly(int n,tlPoint *pp) :n(n){
+		p = new tlPoint[n+5];
+		for (int i = 0; i < n; i++) p[i] = pp[i];
+	}
+	void setPots(tlPoint *pp) {
+		for (int i = 0; i < n; i++) p[i] = pp[i];
+	}
 
+	//将Poly所在的点裁剪到[a,b]-[c,d]范围内,返回mask矩阵
+	void cut(int a,int b,int c,int d) {
+		Mat mask = Mat::zeros(c, d, CV_8U);
+		p[n] = p[0];
+		for (int i = 0; i < n; i++) tlDrawLine(mask, p[i], p[i + 1]);
+		for ()
+		for (int i = a; i <=b; i++)
+			for (int j = c; j <= d; j) {
+
+			}
+	}
+
+};
+
+
+//允许使用别名 Point
+#ifdef USE_ALIAS
+typedef tlPoly Poly;
+#endif
 
 #endif
