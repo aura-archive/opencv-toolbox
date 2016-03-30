@@ -1,3 +1,10 @@
+/****************************************************
+* tlDebug for ytl's debug use
+* Tianlong Yang, yangtianlong111@gmail.com
+* Computer Science & Technology, Tsinghua University
+* Copyright (c) 2016.3.29 All rights reserved.
+*****************************************************/
+
 #ifndef TLDEBUG_H
 #define TLDEBUG_H
 

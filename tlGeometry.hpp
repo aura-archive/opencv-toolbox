@@ -1,3 +1,17 @@
+/****************************************************
+* tlGeometry for ytl's geometry calculate use
+* Tianlong Yang, yangtianlong111@gmail.com
+* Computer Science & Technology, Tsinghua University
+* Copyright (c) 2016.3.29 All rights reserved.
+*****************************************************/
+
+
+//****************
+//!!!!
+//特别注意,由于某些原因tlPoly中的点是从0开始算的
+//!!!!
+//****************
+
 #ifndef TLGEOMETRY_H
 #define TLGEOMETRY_H
 
@@ -267,7 +281,7 @@ namespace tl{
 		}
 		tlPoly(int n, tlPoint *aa) :n(n){
 			a = new tlPoint[n + 5];
-			for (int i = 0; i < n; i++) {
+			for (int i = 1; i <= n; i++) {
 				a[i] = aa[i];
 			}
 		}
