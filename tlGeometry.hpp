@@ -8,9 +8,39 @@
 
 //****************
 //!!!!
-//特别注意,由于某些原因tlPoly中的点是从0开始算的
+//特别注意,由于历史原因tlPoly中的点poly.a是从1开始算的(poly.a[1]~poly.a[n]),poly.a[0]没有用途(maybe将在未来修复)
 //!!!!
 //****************
+/********************************
+
+用法举例
+【tlPoint】
+tlPoint p1 = tlPoint(1, 2);
+tlPoint p2(3, 4);
+Debug()<<(p1+p2)<<" "<<p1*p2<<" "<<dot(p1,p2); //+ - 叉积
+Debug() << "Vector len: " << p1.len() << " 2DPoint dis:" << p1.dis(p2);
+
+【tlLine】
+tlLine l1(tlPoint(0, 0), tlPoint(4, 5));   //出发点为(0,0),方向为(4,5)的直线/线段/射线  (类型视具体情况而定)
+tlLine l2(p1,p2);
+tlPoint pp;
+if (tlCheckIntersectLine(l1, l2, pp)) {
+Debug() << "直线l1和l2的交点为: " << pp;
+}
+
+【tlPoly】
+tlPoly poly(5);
+for (int i = 0; i <1; i+=0.2) {//注意第一个点为1
+poly.a[i] = tlPoint(sin(i), cos(i));
+}
+Debug() << " poly's area :" << poly.getArea();//面积
+Debug() << "poly's circum" << poly.getCircum();//周长
+Debug() << "poly's gravity" << poly.getGravity();//重心
+Poly convex = poly.getConvex();//凸包
+
+
+********************************/
+
 
 #ifndef TLGEOMETRY_H
 #define TLGEOMETRY_H
@@ -30,6 +60,11 @@ using namespace std;
 #endif
 
 //double的可以保存的最大数字比long long(int64)要小很多,但是double 保存的是有效数字,并且不会算爆(只是会损失精度),比如1.23*10^100 double是可以装下的 
+
+/*********************
+*********************/
+
+
 namespace tl{
 	static const int PolygonN = 100005;
 	const double EPS=1e-6;
@@ -78,6 +113,8 @@ namespace tl{
 		tlPoint rotate(const tlPoint &angle) {
 			return tlPoint(x*angle.x - y*angle.y, x*angle.y + y*angle.x);
 		}//Attention    rotate 90=rotate(tlPoint(0,1));
+		
+		//朝8连通方向移动一步(前4个为4连通方向)
 		void moveTo(int dir) {
 			x += xo[dir];
 			y += yo[dir];

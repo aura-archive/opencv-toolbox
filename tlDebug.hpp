@@ -5,6 +5,26 @@
 * Copyright (c) 2016.3.29 All rights reserved.
 *****************************************************/
 
+
+/************************************
+tlDebug类，使用tlDebug()<<xxx; 调用，默认会在每次输出后自动加回车，若要关闭使用Debug()<<xxx<<NoEnter;
+
+用法举例
+tlDebug().setDebugOutputWay(Off);
+tlDebug().setDebugOutputWay(FileOut);
+tlDebug().setDebugOutputWay(StdOut);
+tlDebug() << "This" << 1 << 's' << "good";
+tlDebug().pause();
+
+//opencv use
+#define USE_OPENCV
+Mat a(10, 10, CV_8U);
+tlDebug()<<Scalar(1,2,3)<<Vec3b(1,2,3)<<uchar('2');
+tlDebug().printMat<uchar>(a);
+
+
+************************************/
+
 #ifndef TLDEBUG_H
 #define TLDEBUG_H
 
@@ -27,23 +47,7 @@ using namespace std;
 
 namespace tl {
 
-	/************************************
-	tlDebug类，使用tlDebug()<<xxx; 调用，默认会在每次输出后自动加回车，若要关闭使用Debug()<<xxx<<NoEnter;
 
-	usage:
-	tlDebug().setDebugOutputWay(Off);
-	tlDebug().setDebugOutputWay(FileOut);
-	tlDebug().setDebugOutputWay(StdOut);
-	tlDebug() << "This" << 1 << 's' << "good";
-	tlDebug().pause();
-
-	//opencv use
-	Mat a(10, 10, CV_8U);
-	tlDebug()<<Scalar(1,2,3)<<Vec3b(1,2,3)<<uchar('2');
-	tlDebug().printMat<uchar>(a);
-
-
-	************************************/
 
 
 

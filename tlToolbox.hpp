@@ -8,26 +8,19 @@
 
 /**************************************
 由于opencv库中存在一些问题和还不太完善的功能，使用此ToolBox进行补充
-ytl的Toolbox，由{
-一般类模块
+ytl的Toolbox，主要由{
+tlToolbox
 tlDebug
 tlGeometry
-tlArray
-opencv函数模块
-tlMath
-tlTranslate
-tlGrating
-基础函数
-basic
 }
 组成
 
 tlDebug为类Qt的调试类，可以使用tlDebug()<<xxx来调用，详见tlDebug.hpp
 tlArray为矩阵类，用来生成多维矩阵和矩阵相关操作
-tlMath为opencv相关计算函数
+//tlMath为opencv相关计算函数
 tlGeometry为几何相关函数,包括坐点类tltlPoint和多边形类tlPoly
-tlGrating为光栅几何相关函数
-tlTranslate为opencv图形转换函数
+//tlGrating为光栅几何相关函数
+//tlTranslate为opencv图形转换函数
 
 
 使用`using namespace tl;`来使用ToolBox里的函数
@@ -38,12 +31,20 @@ tlPoint <= tltlPoint
 
 ************************************/
 
+
+
 /********************************************
 OpenCV中的注意事项
 1.Scalar的 / 重载是有问题的, 要用自己重写的div(),
 2.Mat的 * / 为矩阵操作,要用Mat::mul(),Mat::div()
 ********************************************/
 
+
+/**************************************
+PS.OpenCV常见函数用法
+Mat a(300,300,CV_8UC3);
+imread(a,"")
+**************************************/
 
 
 #ifndef TOOLBOX_H
