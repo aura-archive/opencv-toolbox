@@ -1,5 +1,12 @@
 //opencv基本类型为Mat，用来表示图片，其常见类型为CV_8U(黑白)，CV_8UC3(三通道彩色)
 
+#include <opencv2/opencv.hpp>
+#include <vector>
+using namespace cv;
+using namespace std;
+
+int main()
+{
 	Mat a(300, 300, CV_8U);
 	Mat b = Mat::zeros(300, 300, CV_8UC3);
 
@@ -7,7 +14,7 @@
 		for (int j = 0; j < 300; j++) {
 			a.at<uchar>(i, j) = 0;//黑色
 		}
-	
+
 	for (int i = 0; i < 300; i++)
 		for (int j = 0; j < 300; j++) {
 			b.at<Vec3b>(i, j) = Vec3b(255, 0, 0);  //BGR编码，此为蓝色
@@ -19,11 +26,16 @@
 	Mat c;
 	merge(imgList, c);
 
-
+	
+	//图片保存
+	imwrite("test.png", a);
 	//图片读入
-	Mat img = imread("test.jpg");
+	Mat img = imread("test.png");
 	//图片显示
-	imshow("test",img);
+	imshow("test", img);
 	waitKey(1000);//0表示等待键盘事件
-	//图片输出
-	imwrite("test.png", img);
+				  //图片输出
+
+
+	return 0;
+}
